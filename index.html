@@ -4,127 +4,158 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>Graphviz Online</title>
-    <style type="text/css" media="screen">
-        body {
-            overflow: hidden;
-            margin: 0 0;
-        }
-
-        #editor {
-            margin: 0;
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            right: 75%;
-            left: 0;
-        }
-
-        #review {
-            margin: 0;
-            position: absolute;
-            top: 50px;
-            bottom: 0;
-            right: 0;
-            left: 25%;
-            overflow: scroll;
-        }
-
-        #options {
-            margin: 0;
-            position: fixed;
-            left: 25%;
-            width: 100%;
-        }
-
-        #options {
-            flex: 0 0 auto;
-            background: #eee;
-            border-bottom: 1px solid #ccc;
-            padding: 8px;
-            overflow: hidden;
-        }
-
-        #options label {
-            margin-right: 8px;
-        }
-
-        #options #raw.disabled {
-            opacity: 0.5;
-        }
-
-        #shareurl {
-            display: none;
-        }
-
-        #status {
-            width: 100%;
-            position: fixed;
-            bottom: 0;
-            display: block;
-            color: #FFF;
-            z-index: 999;
-        }
-
-        #review svg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
-
-        #review #text {
-            font-size: 12px;
-            font-family: monaco, courier, monospace;
-            white-space: pre;
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-        }
-
-        #review img {
-            display: block;
-            margin: 0 auto;
-        }
-
-        #review.working svg, #output.error svg,
-        #review.working #text, #output.error #text,
-        #review.working img, #output.error img {
-            opacity: 0.4;
-        }
-
-        #review.error #error {
-            display: inherit;
-        }
-
-        #review #error {
-            display: none;
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            margin-right: 20px;
-            background: red;
-            color: white;
-            z-index: 1;
-        }
-
-        #download {
-            font: bold 12px Arial;
-            text-decoration: none;
-            background-color: #EEEEEE;
-            color: #333333;
-            padding: 2px 6px 2px 6px;
-            border-top: 1px solid #CCCCCC;
-            border-right: 1px solid #333333;
-            border-bottom: 1px solid #333333;
-            border-left: 1px solid #CCCCCC;
-        }
-
-    </style>
 </head>
+<style type="text/css" media="screen">
+    body {
+        overflow: hidden;
+        margin: 0 0;
+    }
+
+    #editor {
+        margin: 0;
+        position: fixed;
+        top: 0;
+        bottom: 400px;
+        right: 75%;
+        width: 400px;
+        left: 0;
+        resize: horizontal;
+        overflow: auto;
+    }
+
+    #tiger_image {
+        position: absolute;
+        margin: 0;
+        bottom: 0px;
+        width: 400px;
+        height: 400px;
+    }
+
+    #tiger_image img {
+        width: 100%;
+        height: 100%;
+    }
+
+    #review {
+        margin: 0;
+        position: absolute;
+        top: 50px;
+        bottom: 0;
+        right: 0;
+        left: 400px;
+        overflow: scroll;
+    }
+
+    #options {
+        margin: 0;
+        position: fixed;
+        left: 400px;
+        width: 100%;
+    }
+
+    #options {
+        flex: 0 0 auto;
+        background: #eee;
+        border-bottom: 1px solid #ccc;
+        padding: 8px;
+        overflow: hidden;
+    }
+
+    @media (max-width: 1600px) {
+        #tiger_image {
+            position: absolute;
+            width: 25%;
+            height: auto;
+        }
+        #editor {
+            bottom: 25vw;
+            width: 25%;
+        }
+        #options, #review {
+            left: 25%;
+        }
+    }
+
+    #options label {
+        margin-right: 8px;
+    }
+
+    #options #raw.disabled {
+        opacity: 0.5;
+    }
+
+    #shareurl {
+        display: none;
+    }
+
+    #status {
+        width: 100%;
+        position: fixed;
+        bottom: 0;
+        display: block;
+        color: #FFF;
+        z-index: 999;
+    }
+
+    #review svg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    #review #text {
+        font-size: 12px;
+        font-family: monaco, courier, monospace;
+        white-space: pre;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+    }
+
+    #review img {
+        display: block;
+        margin: 0 auto;
+    }
+
+    #review.working svg, #output.error svg,
+    #review.working #text, #output.error #text,
+    #review.working img, #output.error img {
+        opacity: 0.4;
+    }
+
+    #review.error #error {
+        display: inherit;
+    }
+
+    #review #error {
+        display: none;
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        margin-right: 20px;
+        background: red;
+        color: white;
+        z-index: 1;
+    }
+
+    #download {
+        font: bold 12px Arial;
+        text-decoration: none;
+        background-color: #EEEEEE;
+        color: #333333;
+        padding: 2px 6px 2px 6px;
+        border-top: 1px solid #CCCCCC;
+        border-right: 1px solid #333333;
+        border-bottom: 1px solid #333333;
+        border-left: 1px solid #CCCCCC;
+    }
+
+</style>
 <body>
 <pre id="editor">digraph G {
 
@@ -153,6 +184,11 @@
   start [shape=Mdiamond];
   end [shape=Msquare];
 }</pre>
+
+<div id="tiger_image">
+    <img src="img/tiger.png" alt="logo">
+</div>
+
 <div id="options">
     <label id="engine">
         Engine:
